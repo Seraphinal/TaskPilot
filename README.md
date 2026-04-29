@@ -4,6 +4,12 @@
 
 A local **Electron** desktop app: schedule **Python** scripts with **cron-style** expressions, persist tasks & runs in **SQLite**, pipe **stdout/stderr** to disk, UI built with **Vue 3** and **Element Plus**.
 
+### 界面预览 · UI preview
+
+![任务调度台-概览主页](./docs/readme/overview.png)
+
+*概览：后台连接、任务与运行、最近执行、预计下次 Cron 触发 · Overview: connectivity, stats, recent runs, next scheduled Cron*
+
 ---
 
 ## 中文
