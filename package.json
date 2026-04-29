@@ -1,5 +1,6 @@
 {
   "name": "taskpilot",
+  "description": "Electron + Vue 3 desktop scheduler: run Python scripts on cron schedules, SQLite run history, stdout/stderr logs. Windows. (任务调度台)",
   "private": true,
   "version": "0.1.0",
   "type": "module",
