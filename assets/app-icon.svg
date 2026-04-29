@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="120" x2="904" y2="904" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1677ff"/>
+      <stop offset="1" stop-color="#69b1ff"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0.2" cy="0.15" r="0.9">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#0b2a6f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect x="96" y="96" width="832" height="832" rx="184" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="96" y="96" width="832" height="832" rx="184" fill="url(#shine)"/>
+
+  <!-- Minimal "T" mark -->
+  <path
+    d="M303 330c0-30 24-54 54-54h310c30 0 54 24 54 54s-24 54-54 54H559v364c0 30-24 54-54 54s-54-24-54-54V384H357c-30 0-54-24-54-54z"
+    fill="#ffffff"
+    fill-opacity="0.96"
+  />
+</svg>
+

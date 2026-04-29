@@ -1,0 +1,92 @@
+{
+  "name": "taskpilot",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist-electron/main.cjs",
+  "scripts": {
+    "prebuild": "npm run gen:icons",
+    "predev": "npx -y kill-port 5173 || exit 0",
+    "dev:renderer": "vite",
+    "dev:renderer:clean": "npx -y kill-port 5173 || exit 0 && vite",
+    "dev:electron": "wait-on tcp:5173 dist-electron/main.cjs && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 npx electron .",
+    "dev:main": "esbuild electron/main.ts electron/preload.ts --bundle --platform=node --target=node20 --format=cjs --outdir=dist-electron --out-extension:.js=.cjs --external:electron --sourcemap --watch",
+    "dev": "concurrently -k -n main,renderer,electron -c blue,green,magenta \"npm:dev:main\" \"npm:dev:renderer\" \"npm:dev:electron\"",
+    "build:renderer": "vite build",
+    "build:main": "esbuild electron/main.ts electron/preload.ts --bundle --platform=node --target=node20 --format=cjs --outdir=dist-electron --out-extension:.js=.cjs --external:electron --minify",
+    "build": "npm run build:renderer && npm run build:main",
+    "start": "npx electron .",
+    "dist": "npm run build && electron-builder",
+    "gen:icons": "node tools/gen-icons.mjs",
+    "lint": "eslint .",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "cron-parser": "^5.3.1",
+    "element-plus": "^2.9.6",
+    "pinia": "^2.3.0",
+    "sql.js": "^1.13.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@resvg/resvg-wasm": "^2.6.2",
+    "@types/node": "^22.13.5",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-typescript": "^14.4.0",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^34.2.0",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.25.1",
+    "eslint": "^9.22.0",
+    "eslint-plugin-vue": "^9.33.0",
+    "kill-port": "^2.0.1",
+    "png-to-ico": "^2.1.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.2",
+    "vue-tsc": "^2.2.10",
+    "wait-on": "^8.0.2"
+  },
+  "build": {
+    "appId": "com.taskscheduler.console",
+    "productName": "任务调度台",
+    "directories": {
+      "output": "release-out"
+    },
+    "files": [
+      "dist-renderer/**",
+      "dist-electron/**",
+      "package.json"
+    ],
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "node_modules/sql.js/dist/sql-wasm.wasm",
+        "to": "sql-wasm.wasm"
+      },
+      {
+        "from": "assets/generated/app.png",
+        "to": "app.png"
+      }
+    ],
+    "win": {
+      "icon": "assets/generated/app.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

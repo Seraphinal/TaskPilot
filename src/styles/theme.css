@@ -1,0 +1,134 @@
+:root {
+  --el-color-primary: #1677ff;
+  --el-border-radius-base: 8px;
+  --el-border-radius-small: 6px;
+  --el-font-size-base: 14px;
+  --el-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+
+  --app-bg: #f0f2f5; /* Ant Design Pro background */
+  --app-panel: #ffffff;
+  --app-panel-2: rgba(255, 255, 255, 0.92);
+  --app-border: rgba(5, 5, 5, 0.06);
+  --app-text: #0f172a;
+  --app-text-muted: rgba(0, 0, 0, 0.65);
+  --app-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --app-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  --layout-sider-width: 232px;
+  --layout-sider-collapsed-width: 80px;
+  --layout-header-height: 56px;
+  --layout-content-padding: 24px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--app-bg);
+  color: var(--app-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Element Plus: align with modern admin style */
+.el-card {
+  border-radius: 8px;
+  border: 1px solid var(--app-border);
+  background: var(--app-panel);
+  box-shadow: var(--app-shadow-xs);
+}
+
+.el-card__body {
+  padding: 20px;
+}
+
+.el-table {
+  --el-table-header-bg-color: #fafafa;
+  --el-table-row-hover-bg-color: rgba(22, 119, 255, 0.06);
+  --el-table-border-color: rgba(5, 5, 5, 0.06);
+}
+
+.el-table th.el-table__cell {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.el-table .cell {
+  line-height: 22px;
+}
+
+.el-drawer {
+  --el-drawer-bg-color: #ffffff;
+}
+
+.el-menu {
+  border-right: none;
+}
+
+.el-menu-item.is-active {
+  font-weight: 700;
+}
+
+/* Pro-like menu selected style: light bg + left bar */
+.el-menu:not(.el-menu--collapse) .el-menu-item.is-active {
+  background: rgba(22, 119, 255, 0.10) !important;
+  border-radius: 8px;
+  margin: 0 8px;
+  position: relative;
+}
+.el-menu:not(.el-menu--collapse) .el-menu-item.is-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--el-color-primary);
+}
+.el-menu:not(.el-menu--collapse) .el-menu-item {
+  margin: 0 8px;
+  border-radius: 8px;
+}
+
+.el-button--primary {
+  box-shadow: 0 6px 16px rgba(22, 119, 255, 0.18);
+}
+
+.el-icon {
+  font-size: 16px;
+}
+
+.el-menu-item .el-icon {
+  font-size: 18px;
+}
+
+.el-input__wrapper,
+.el-select__wrapper {
+  border-radius: 8px;
+}
+
+/* Reduce visual noise for admin pages */
+.el-card__header {
+  font-weight: 600;
+}
+
+/* Subtle scrollbar like admin consoles */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
